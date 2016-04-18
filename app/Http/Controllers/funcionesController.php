@@ -15,11 +15,6 @@ use App\Http\Controllers\Controller;
 class funcionesController extends Controller
 {
 	public function index(){
-        /*$html = '<html><body>'
-                . '<p>Esto es un PDF</p>'
-                . '</body></html>';
-        return PDF::load($html, 'A4', 'portrait')->show();*/
-
     	$carreras = Carrera::all();
     	return view('inicio', compact('carreras'));
     }
@@ -31,10 +26,10 @@ class funcionesController extends Controller
         return view('materias', compact('carreras', 'carrera', 'materias'));
     }
 
-    public function PDF($id_materia){
-    	$materia = Materia::find($id_materia);
+    public function PDF($id){
+    	$materia = Materia::find($id);
     	$carrera = Carrera::find($materia->id_carrera);
-    	$temas = Tema::where('id_materia','=', $id_materia)->get();
+    	$temas = Tema::where('id_materia','=', $id)->get();
 
     	$view = \View::make('programa_materia_PDF', compact('materia', 'carrera', 'temas'))->render();
         $pdf = \App::make('dompdf.wrapper');

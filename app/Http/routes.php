@@ -15,7 +15,7 @@ Route::get('/', 'funcionesController@index');
 
 Route::get('/{id}', 'funcionesController@materias');
 
-Route::get('/PDF/{id_materia}', 'funcionesController@PDF');
+Route::get('/PDF/{id}', 'funcionesController@PDF');
 
 /*
 |--------------------------------------------------------------------------
